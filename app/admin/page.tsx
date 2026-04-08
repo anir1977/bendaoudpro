@@ -31,13 +31,17 @@ export default function AdminDashboard() {
   async function toggleMaintenance() {
     if (maintenance === null) return
     setTogglingMaintenance(true)
-    const res = await fetch('/api/admin/settings', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ maintenanceMode: !maintenance }),
-    })
-    const data = await res.json()
-    setMaintenance(data.maintenanceMode)
+    try {
+      const res = await fetch('/api/admin/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ maintenanceMode: !maintenance }),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setMaintenance(data.maintenanceMode)
+      }
+    } catch {}
     setTogglingMaintenance(false)
   }
 

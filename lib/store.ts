@@ -3,6 +3,7 @@ import path from 'path'
 import { bijoux as defaultBijoux, montres as defaultMontres, Bijou, Montre } from '@/data/products'
 
 const storePath = path.join(process.cwd(), 'data', 'store.json')
+const maintenancePath = process.env.VERCEL ? '/tmp/maintenance.json' : path.join(process.cwd(), 'data', 'maintenance.json')
 
 interface Store {
   bijoux: Bijou[]
@@ -78,13 +79,17 @@ export function deleteMontre(id: string) {
 }
 
 export function getMaintenanceMode(): boolean {
-  return readStore().maintenanceMode ?? false
+  try {
+    if (fs.existsSync(maintenancePath)) {
+      const data = JSON.parse(fs.readFileSync(maintenancePath, 'utf-8'))
+      return Boolean(data.enabled)
+    }
+  } catch {}
+  return false
 }
 
 export function setMaintenanceMode(value: boolean) {
-  const store = readStore()
-  store.maintenanceMode = value
-  writeStore(store)
+  fs.writeFileSync(maintenancePath, JSON.stringify({ enabled: value }))
 }
 
 export function getStats() {
