@@ -89,10 +89,13 @@ export default function ContactPage() {
                     <Clock size={18} className="text-gold-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sm tracking-wide mb-1.5">Horaires d'ouverture</h3>
+                    <h3 className="font-semibold text-sm tracking-wide mb-1.5">Horaires d&apos;ouverture</h3>
                     <div className="text-neutral-600 text-sm space-y-1">
-                      <p>Lundi – Samedi : 9h00 – 20h00</p>
-                      <p>Dimanche : 10h00 – 18h00</p>
+                      <p>Lun – Jeu &amp; Dim : 10h00 – 21h00</p>
+                      <p>Vendredi &amp; Samedi : 10h00 – 21h30</p>
+                      <p className="text-gold-600 text-xs mt-1.5 flex items-center gap-1">
+                        <span>⚠</span> Vendredi : fermeture à l&apos;heure de la prière du Jumu&apos;ah
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -30,17 +30,21 @@ export default function Navbar() {
   return (
     <header className="bg-white shadow-sm border-b border-gray-100">
       {/* Top contact bar */}
-      <div className="bg-neutral-900 py-1.5 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-6">
-          <a href="tel:0522621818" className="flex items-center gap-1.5 text-gold-400 text-xs tracking-widest hover:text-gold-300 transition-colors">
-            <Phone size={11} /> 0522 62 18 18
+      <div className="bg-neutral-900 py-2 px-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
+          {/* Mobile: 2 phones side by side */}
+          <a href="tel:0522621818" className="flex items-center gap-1 text-gold-400 text-xs tracking-wider hover:text-gold-300 transition-colors">
+            <Phone size={11} /> <span>0522 62 18 18</span>
           </a>
           <span className="text-neutral-600 text-xs">|</span>
-          <span className="text-neutral-400 text-xs tracking-widest">TACHFINE CENTER — CASABLANCA</span>
-          <span className="text-neutral-600 text-xs">|</span>
-          <a href="tel:0661180440" className="flex items-center gap-1.5 text-gold-400 text-xs tracking-widest hover:text-gold-300 transition-colors">
-            <Phone size={11} /> 0661 18 04 40
+          <a href="tel:0661180440" className="flex items-center gap-1 text-gold-400 text-xs tracking-wider hover:text-gold-300 transition-colors">
+            <Phone size={11} /> <span>0661 18 04 40</span>
           </a>
+          {/* Desktop only: address */}
+          <span className="hidden md:flex items-center gap-4 text-neutral-500 text-xs">
+            <span>|</span>
+            <span className="tracking-widest">TACHFINE CENTER — CASABLANCA</span>
+          </span>
         </div>
       </div>
 
