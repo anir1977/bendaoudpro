@@ -7,6 +7,7 @@ const storePath = path.join(process.cwd(), 'data', 'store.json')
 interface Store {
   bijoux: Bijou[]
   montres: Montre[]
+  maintenanceMode?: boolean
 }
 
 function readStore(): Store {
@@ -73,6 +74,16 @@ export function updateMontre(id: string, data: Partial<Montre>) {
 export function deleteMontre(id: string) {
   const store = readStore()
   store.montres = store.montres.filter((m) => m.id !== id)
+  writeStore(store)
+}
+
+export function getMaintenanceMode(): boolean {
+  return readStore().maintenanceMode ?? false
+}
+
+export function setMaintenanceMode(value: boolean) {
+  const store = readStore()
+  store.maintenanceMode = value
   writeStore(store)
 }
 

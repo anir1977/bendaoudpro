@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { Power } from 'lucide-react'
 
 interface Stats {
   totalBijoux: number
@@ -24,6 +25,25 @@ const categoryLabels: Record<string, string> = {
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null)
+  const [maintenance, setMaintenance] = useState<boolean | null>(null)
+  const [togglingMaintenance, setTogglingMaintenance] = useState(false)
+
+  async function toggleMaintenance() {
+    if (maintenance === null) return
+    setTogglingMaintenance(true)
+    const res = await fetch('/api/admin/settings', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ maintenanceMode: !maintenance }),
+    })
+    const data = await res.json()
+    setMaintenance(data.maintenanceMode)
+    setTogglingMaintenance(false)
+  }
+
+  useEffect(() => {
+    fetch('/api/admin/settings').then(r => r.json()).then(d => setMaintenance(d.maintenanceMode))
+  }, [])
 
   useEffect(() => {
     async function loadStats() {
@@ -74,6 +94,40 @@ export default function AdminDashboard() {
       <div>
         <h1 className="font-serif text-3xl text-gold-400 tracking-wide">Tableau de bord</h1>
         <p className="text-neutral-400 mt-1">Bienvenue dans l&apos;espace d&apos;administration Ben Daoud Bijouterie</p>
+      </div>
+
+      {/* Maintenance mode card */}
+      <div className={`rounded-xl border p-5 flex items-center justify-between gap-4 transition-colors ${
+        maintenance
+          ? 'bg-red-950/30 border-red-800/40'
+          : 'bg-neutral-900 border-gold-900/40'
+      }`}>
+        <div className="flex items-center gap-4">
+          <div className={`p-2.5 rounded-lg ${maintenance ? 'bg-red-900/40 text-red-400' : 'bg-emerald-900/40 text-emerald-400'}`}>
+            <Power size={20} />
+          </div>
+          <div>
+            <h2 className={`font-semibold text-sm ${maintenance ? 'text-red-300' : 'text-emerald-300'}`}>
+              {maintenance ? 'Site en maintenance' : 'Site en ligne'}
+            </h2>
+            <p className="text-neutral-400 text-xs mt-0.5">
+              {maintenance
+                ? 'Les visiteurs voient la page de maintenance. Seul l\'admin peut accéder au site.'
+                : 'Le site est accessible normalement pour tous les visiteurs.'}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={toggleMaintenance}
+          disabled={togglingMaintenance || maintenance === null}
+          className={`shrink-0 px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 ${
+            maintenance
+              ? 'bg-emerald-700 hover:bg-emerald-600 text-white'
+              : 'bg-red-800 hover:bg-red-700 text-white'
+          }`}
+        >
+          {togglingMaintenance ? '...' : maintenance ? 'Remettre en ligne' : 'Activer maintenance'}
+        </button>
       </div>
 
       {/* KPI Cards */}
