@@ -3,6 +3,8 @@ import { cookies } from 'next/headers'
 import { COOKIE_NAME, createToken } from '@/lib/auth'
 import { getMaintenanceMode, setMaintenanceModeLocal } from '@/lib/store'
 
+export const dynamic = 'force-dynamic'
+
 function isAdmin() {
   const token = cookies().get(COOKIE_NAME)
   return token?.value === createToken()
