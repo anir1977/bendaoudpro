@@ -32,7 +32,10 @@ export default function ImageUpload({ value, onChange }: Props) {
 
     // Base64 encode
     const buffer = await blob.arrayBuffer()
-    const base64 = btoa(String.fromCharCode(...new Uint8Array(buffer)))
+    const bytes = new Uint8Array(buffer)
+    let binary = ''
+    for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i])
+    const base64 = btoa(binary)
     const ext = 'jpg'
     const filename = `${Date.now()}.${ext}`
 
