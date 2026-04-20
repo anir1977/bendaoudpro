@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
+import ImageUpload from '@/components/admin/ImageUpload'
 
 const brands = ['Guess', 'Festina', 'Daniel Cline', 'Guess Collection', 'Tommy Hilfiger']
 const genders = [
@@ -160,26 +160,9 @@ export default function NouvelleMontre() {
           </div>
         </div>
 
-        <div className="bg-neutral-900 border border-gold-900/40 rounded-xl p-6 space-y-5">
-          <h2 className="text-gold-500 font-medium text-sm uppercase tracking-widest">Image</h2>
-
-          <div>
-            <label className="block text-xs text-neutral-400 uppercase tracking-wider mb-1.5">URL de l&apos;image *</label>
-            <input
-              name="image"
-              value={form.image}
-              onChange={handleChange}
-              required
-              className="w-full bg-neutral-800 border border-neutral-700 focus:border-gold-600 rounded-lg px-4 py-2.5 text-white outline-none transition-colors"
-              placeholder="https://..."
-            />
-          </div>
-
-          {form.image && (
-            <div className="relative w-full h-48 rounded-lg overflow-hidden bg-neutral-800">
-              <Image src={form.image} alt="Aperçu" fill className="object-cover" unoptimized />
-            </div>
-          )}
+        <div className="bg-neutral-900 border border-gold-900/40 rounded-xl p-6 space-y-4">
+          <h2 className="text-gold-500 font-medium text-sm uppercase tracking-widest">Photo du produit</h2>
+          <ImageUpload value={form.image} onChange={url => setForm(p => ({ ...p, image: url }))} />
         </div>
 
         <div className="bg-neutral-900 border border-gold-900/40 rounded-xl p-6">
