@@ -60,6 +60,13 @@ export async function readFileFromGitHub(path: string): Promise<string | null> {
   } catch { return null }
 }
 
+// ── Read store.json from GitHub ───────────────────────────────────────────────
+export async function readStoreFromGitHub(): Promise<{ bijoux: unknown[]; montres: unknown[] } | null> {
+  const text = await readFileFromGitHub('data/store.json')
+  if (!text) return null
+  try { return JSON.parse(text) } catch { return null }
+}
+
 // ── Save store.json to GitHub ─────────────────────────────────────────────────
 export async function saveStoreToGitHub(store: object): Promise<boolean> {
   const content = Buffer.from(JSON.stringify(store, null, 2)).toString('base64')
