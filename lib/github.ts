@@ -67,13 +67,17 @@ export async function saveStoreToGitHub(store: object): Promise<boolean> {
 }
 
 // ── Upload an image (base64) → public/uploads/ ────────────────────────────────
+// Returns the raw GitHub CDN URL (available immediately after commit, no redeploy needed)
 export async function uploadImageToGitHub(
   base64Data: string,   // pure base64 without data: prefix
   filename: string,
 ): Promise<string | null> {
   const path = `public/uploads/${filename}`
   const ok = await writeFileToGitHub(path, base64Data, `upload: ${filename}`)
-  return ok ? `/uploads/${filename}` : null
+  if (!ok) return null
+  // Use raw GitHub URL — available within seconds, no Vercel redeploy needed
+  const [owner, repo] = (GITHUB_REPO ?? '').split('/')
+  return `https://raw.githubusercontent.com/${owner}/${repo}/${BRANCH}/${path}`
 }
 
 // ── Trigger Vercel redeploy (optional) ───────────────────────────────────────

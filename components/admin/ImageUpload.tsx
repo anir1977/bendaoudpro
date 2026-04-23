@@ -36,8 +36,11 @@ export default function ImageUpload({ value, onChange }: Props) {
     let binary = ''
     for (let i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i])
     const base64 = btoa(binary)
-    const ext = 'jpg'
-    const filename = `${Date.now()}.${ext}`
+    const filename = `${Date.now()}.jpg`
+
+    // Show local preview immediately while uploading
+    const localPreview = `data:image/jpeg;base64,${base64}`
+    onChange(localPreview)
 
     const res = await fetch('/api/admin/upload', {
       method: 'POST',
@@ -48,9 +51,10 @@ export default function ImageUpload({ value, onChange }: Props) {
 
     if (res.ok) {
       const { url } = await res.json()
-      onChange(url)
+      onChange(url) // Replace data URL with real URL
     } else {
-      setError('Erreur upload — réessayez.')
+      // Keep local preview but warn — will need re-upload
+      setError('Upload GitHub échoué. La photo ne sera pas sauvegardée. Réessayez.')
     }
   }
 

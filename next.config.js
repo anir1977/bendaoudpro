@@ -9,6 +9,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.danielkleinwatchusa.com' },
       { protocol: 'https', hostname: 'watch-connection.com' },
       { protocol: 'https', hostname: 'scontent.fcmn7-1.fna.fbcdn.net' },
+      { protocol: 'https', hostname: 'raw.githubusercontent.com' },
     ],
   },
 }
