@@ -13,6 +13,11 @@ export default function ImageUpload({ value, onChange }: Props) {
   const [uploading, setUploading] = useState(false)
   const [mode, setMode] = useState<'upload' | 'url'>('upload')
   const [error, setError] = useState('')
+  // Séparation : previewUrl pour l'affichage, value pour la sauvegarde
+  const [previewUrl, setPreviewUrl] = useState<string>('')
+
+  // Ce qu'on affiche dans le preview : data URL locale si disponible, sinon value (URL GitHub existante)
+  const displayUrl = previewUrl || value
 
   async function handleFile(file: File) {
     if (!file.type.startsWith('image/')) { setError('Fichier invalide — images uniquement.'); return }
@@ -38,9 +43,10 @@ export default function ImageUpload({ value, onChange }: Props) {
     const base64 = btoa(binary)
     const filename = `${Date.now()}.jpg`
 
-    // Show local preview immediately while uploading
+    // Afficher le preview local immédiatement (data URL — toujours disponible)
     const localPreview = `data:image/jpeg;base64,${base64}`
-    onChange(localPreview)
+    setPreviewUrl(localPreview)
+    // On ne touche pas encore à onChange — on attend l'URL GitHub réelle
 
     const res = await fetch('/api/admin/upload', {
       method: 'POST',
@@ -51,9 +57,9 @@ export default function ImageUpload({ value, onChange }: Props) {
 
     if (res.ok) {
       const { url } = await res.json()
-      onChange(url) // Replace data URL with real URL
+      // Le preview reste en data URL (pas de flash), mais le formulaire reçoit l'URL GitHub
+      onChange(url)
     } else {
-      // Keep local preview but warn — will need re-upload
       setError('Upload GitHub échoué. La photo ne sera pas sauvegardée. Réessayez.')
     }
   }
@@ -62,6 +68,12 @@ export default function ImageUpload({ value, onChange }: Props) {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
     if (file) handleFile(file)
+  }
+
+  function handleClear() {
+    onChange('')
+    setPreviewUrl('')
+    setError('')
   }
 
   return (
@@ -107,7 +119,7 @@ export default function ImageUpload({ value, onChange }: Props) {
         <input
           type="text"
           value={value}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => { onChange(e.target.value); setPreviewUrl('') }}
           placeholder="https://example.com/image.jpg"
           className="w-full bg-neutral-800 border border-neutral-700 focus:border-gold-600 rounded-lg px-4 py-2.5 text-white outline-none transition-colors text-sm"
         />
@@ -115,17 +127,29 @@ export default function ImageUpload({ value, onChange }: Props) {
 
       {error && <p className="text-red-400 text-xs">{error}</p>}
 
-      {/* Preview */}
-      {value && (
+      {/* Upload réussi */}
+      {!uploading && previewUrl && value && !error && (
+        <p className="text-green-500 text-xs flex items-center gap-1">
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+          Photo uploadée avec succès
+        </p>
+      )}
+
+      {/* Preview — utilise toujours la data URL locale si dispo, sinon l'URL existante */}
+      {displayUrl && (
         <div className="relative w-full h-52 rounded-xl overflow-hidden bg-neutral-800 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={value} alt="Aperçu" className="w-full h-full object-cover" />
-          <button type="button" onClick={() => onChange('')}
+          <img src={displayUrl} alt="Aperçu" className="w-full h-full object-cover" />
+          <button type="button" onClick={handleClear}
             className="absolute top-2 right-2 w-7 h-7 bg-black/60 hover:bg-red-600 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all">
             <X size={13} />
           </button>
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 py-2 px-3">
-            <p className="text-white text-xs truncate">{value.split('/').pop()}</p>
+            <p className="text-white text-xs truncate opacity-70">
+              {previewUrl ? 'Prêt à enregistrer' : value.split('/').pop()}
+            </p>
           </div>
         </div>
       )}
