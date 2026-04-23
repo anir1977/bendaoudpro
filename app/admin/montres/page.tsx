@@ -14,10 +14,19 @@ interface Montre {
   featured: boolean
 }
 
+const genderLabels: Record<string, string> = {
+  femme: 'Femme',
+  homme: 'Homme',
+  unisexe: 'Unisexe',
+}
+
 export default function MontresAdmin() {
   const [montres, setMontres] = useState<Montre[]>([])
   const [loading, setLoading] = useState(true)
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [activeBrand, setActiveBrand] = useState<string>('tous')
+  const [activeGender, setActiveGender] = useState<string>('tous')
+  const [search, setSearch] = useState('')
 
   async function load() {
     const res = await fetch('/api/admin/montres')
@@ -35,13 +44,29 @@ export default function MontresAdmin() {
     setDeleting(null)
   }
 
+  // Valeurs présentes dans les données
+  const presentBrands = Array.from(new Set(montres.map(m => m.brand)))
+  const presentGenders = Array.from(new Set(montres.map(m => m.gender)))
+
+  // Filtrage
+  const filtered = montres.filter(m => {
+    const matchBrand  = activeBrand  === 'tous' || m.brand  === activeBrand
+    const matchGender = activeGender === 'tous' || m.gender === activeGender
+    const matchSearch = search === '' || m.name.toLowerCase().includes(search.toLowerCase())
+    return matchBrand && matchGender && matchSearch
+  })
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-serif text-3xl text-gold-400 tracking-wide">Montres</h1>
-          <p className="text-neutral-400 mt-1">{montres.length} montre{montres.length !== 1 ? 's' : ''} au catalogue</p>
+          <p className="text-neutral-400 mt-1 text-sm">
+            {filtered.length} montre{filtered.length !== 1 ? 's' : ''}
+            {activeBrand  !== 'tous' && <span className="text-blue-400"> · {activeBrand}</span>}
+            {activeGender !== 'tous' && <span className="text-blue-400"> · {genderLabels[activeGender] || activeGender}</span>}
+          </p>
         </div>
         <Link
           href="/admin/montres/nouveau"
@@ -54,6 +79,98 @@ export default function MontresAdmin() {
         </Link>
       </div>
 
+      {/* Recherche + filtres */}
+      {!loading && montres.length > 0 && (
+        <div className="space-y-3">
+          {/* Recherche */}
+          <div className="relative">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 105 11a6 6 0 0012 0z" />
+            </svg>
+            <input
+              type="text"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Rechercher une montre..."
+              className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold-700 rounded-xl pl-10 pr-4 py-2.5 text-white text-sm outline-none transition-colors placeholder-neutral-600"
+            />
+            {search && (
+              <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-white">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Filtre par marque */}
+          <div>
+            <p className="text-neutral-600 text-xs uppercase tracking-widest mb-2">Marque</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setActiveBrand('tous')}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${
+                  activeBrand === 'tous'
+                    ? 'bg-blue-700 text-white border-blue-600'
+                    : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:border-blue-800 hover:text-blue-400'
+                }`}
+              >
+                Toutes <span className="opacity-60 ml-1">{montres.length}</span>
+              </button>
+              {presentBrands.map(brand => {
+                const count = montres.filter(m => m.brand === brand).length
+                return (
+                  <button
+                    key={brand}
+                    onClick={() => setActiveBrand(brand)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${
+                      activeBrand === brand
+                        ? 'bg-blue-700 text-white border-blue-600'
+                        : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:border-blue-800 hover:text-blue-400'
+                    }`}
+                  >
+                    {brand} <span className="opacity-60 ml-1">{count}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Filtre par genre */}
+          <div>
+            <p className="text-neutral-600 text-xs uppercase tracking-widest mb-2">Genre</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setActiveGender('tous')}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${
+                  activeGender === 'tous'
+                    ? 'bg-gold-700 text-white border-gold-600'
+                    : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:border-gold-800 hover:text-gold-400'
+                }`}
+              >
+                Tous
+              </button>
+              {presentGenders.map(gender => {
+                const count = montres.filter(m => m.gender === gender).length
+                return (
+                  <button
+                    key={gender}
+                    onClick={() => setActiveGender(gender)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${
+                      activeGender === gender
+                        ? 'bg-gold-700 text-white border-gold-600'
+                        : 'bg-neutral-900 text-neutral-400 border-neutral-800 hover:border-gold-800 hover:text-gold-400'
+                    }`}
+                  >
+                    {genderLabels[gender] || gender} <span className="opacity-60 ml-1">{count}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Table */}
       <div className="bg-neutral-900 border border-gold-900/40 rounded-xl overflow-hidden">
         {loading ? (
@@ -64,12 +181,18 @@ export default function MontresAdmin() {
             </svg>
             Chargement...
           </div>
-        ) : montres.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <div className="text-center py-16 text-neutral-400">
-            <p className="mb-4">Aucune montre dans le catalogue</p>
-            <Link href="/admin/montres/nouveau" className="text-gold-500 hover:text-gold-400">
-              Ajouter la première montre →
-            </Link>
+            {montres.length === 0 ? (
+              <>
+                <p className="mb-4">Aucune montre dans le catalogue</p>
+                <Link href="/admin/montres/nouveau" className="text-gold-500 hover:text-gold-400">
+                  Ajouter la première montre →
+                </Link>
+              </>
+            ) : (
+              <p>Aucun résultat pour cette sélection</p>
+            )}
           </div>
         ) : (
           <table className="w-full text-sm">
@@ -83,18 +206,20 @@ export default function MontresAdmin() {
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-800">
-              {montres.map(montre => (
+              {filtered.map(montre => (
                 <tr key={montre.id} className="hover:bg-neutral-800/50 transition-colors">
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-neutral-800 flex-shrink-0">
-                        <Image
-                          src={montre.image}
-                          alt={montre.name}
-                          fill
-                          className="object-cover"
-                          unoptimized
-                        />
+                        {montre.image ? (
+                          <Image src={montre.image} alt={montre.name} fill className="object-cover" unoptimized />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-neutral-600">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                       <span className="text-white font-medium truncate max-w-[180px]">{montre.name}</span>
                     </div>
@@ -104,7 +229,9 @@ export default function MontresAdmin() {
                       {montre.brand}
                     </span>
                   </td>
-                  <td className="px-5 py-4 text-neutral-400 capitalize hidden md:table-cell">{montre.gender}</td>
+                  <td className="px-5 py-4 text-neutral-400 capitalize hidden md:table-cell">
+                    {genderLabels[montre.gender] || montre.gender}
+                  </td>
                   <td className="px-5 py-4 hidden lg:table-cell">
                     {montre.featured ? (
                       <span className="text-gold-500">★ Oui</span>
@@ -127,9 +254,16 @@ export default function MontresAdmin() {
                         disabled={deleting === montre.id}
                         className="text-neutral-400 hover:text-red-400 transition-colors p-1.5 rounded-lg hover:bg-red-950/30 disabled:opacity-50"
                       >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
+                        {deleting === montre.id ? (
+                          <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                          </svg>
+                        )}
                       </button>
                     </div>
                   </td>
