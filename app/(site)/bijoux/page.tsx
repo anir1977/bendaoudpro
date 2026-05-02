@@ -1,7 +1,10 @@
 import { BijouCard } from '@/components/ProductCard'
-import { bijoux, categoryLabels } from '@/data/products'
+import { categoryLabels } from '@/data/products'
+import { getBijouxLive } from '@/lib/store-live'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Bijoux en Or 18 Carats — Ben Daoud Bijouterie',
@@ -13,7 +16,9 @@ const categories = [
   'gourmette', 'boucle-doreille', 'parure', 'sautoire', 'broche',
 ] as const
 
-export default function BijouxPage() {
+export default async function BijouxPage() {
+  const bijoux = await getBijouxLive()
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Header */}
@@ -46,11 +51,17 @@ export default function BijouxPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
-        {bijoux.map((item) => (
-          <BijouCard key={item.id} item={item} />
-        ))}
-      </div>
+      {bijoux.length === 0 ? (
+        <div className="text-center py-20 text-neutral-400">
+          <p className="text-lg">Aucun bijou disponible pour le moment.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+          {bijoux.map((item) => (
+            <BijouCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { getBijoux, getMontres, updateBijou, deleteBijou } from '@/lib/store'
 import { readStoreFromGitHub, saveStoreToGitHub } from '@/lib/github'
 import { Bijou } from '@/data/products'
@@ -11,7 +12,12 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   if (process.env.VERCEL) {
     const store = await readStoreFromGitHub() ?? { bijoux: getBijoux(), montres: getMontres() }
     store.bijoux = (store.bijoux as Bijou[]).map(b => b.id === params.id ? { ...b, ...data } : b)
-    await saveStoreToGitHub(store)
+    const ok = await saveStoreToGitHub(store)
+    if (!ok) return NextResponse.json({ error: 'Erreur sauvegarde GitHub' }, { status: 500 })
+    revalidatePath('/bijoux')
+    revalidatePath('/bijoux/[category]', 'page')
+    revalidatePath(`/produit/bijou-${params.id}`)
+    revalidatePath('/')
     return NextResponse.json({ success: true })
   }
 
@@ -23,7 +29,11 @@ export async function DELETE(_: Request, { params }: { params: { id: string } })
   if (process.env.VERCEL) {
     const store = await readStoreFromGitHub() ?? { bijoux: getBijoux(), montres: getMontres() }
     store.bijoux = (store.bijoux as Bijou[]).filter(b => b.id !== params.id)
-    await saveStoreToGitHub(store)
+    const ok = await saveStoreToGitHub(store)
+    if (!ok) return NextResponse.json({ error: 'Erreur sauvegarde GitHub' }, { status: 500 })
+    revalidatePath('/bijoux')
+    revalidatePath('/bijoux/[category]', 'page')
+    revalidatePath('/')
     return NextResponse.json({ success: true })
   }
 

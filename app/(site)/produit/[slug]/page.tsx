@@ -1,38 +1,45 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { bijoux, montres, categoryLabels, brandLabels } from '@/data/products'
+import { categoryLabels, brandLabels } from '@/data/products'
+import { getBijouxLive, getMontresLive } from '@/lib/store-live'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { Phone, MapPin, MessageCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+
+export const revalidate = 60
+export const dynamicParams = true
 
 interface Props {
   params: { slug: string }
 }
 
-function getProduct(slug: string) {
+async function getProduct(slug: string) {
   if (slug.startsWith('bijou-')) {
     const id = slug.replace('bijou-', '')
+    const bijoux = await getBijouxLive()
     const item = bijoux.find((b) => b.id === id)
     if (item) return { type: 'bijou' as const, item }
   }
   if (slug.startsWith('montre-')) {
     const id = slug.replace('montre-', '')
+    const montres = await getMontresLive()
     const item = montres.find((m) => m.id === id)
     if (item) return { type: 'montre' as const, item }
   }
   return null
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const [bijoux, montres] = await Promise.all([getBijouxLive(), getMontresLive()])
   return [
     ...bijoux.map((b) => ({ slug: `bijou-${b.id}` })),
     ...montres.map((m) => ({ slug: `montre-${m.id}` })),
   ]
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const result = getProduct(params.slug)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const result = await getProduct(params.slug)
   if (!result) return {}
   return {
     title: `${result.item.name} — Ben Daoud Bijouterie`,
@@ -42,24 +49,24 @@ export function generateMetadata({ params }: Props): Metadata {
 
 const WHATSAPP_NUMBER = '212661180440'
 
-export default function ProductPage({ params }: Props) {
-  const result = getProduct(params.slug)
+export default async function ProductPage({ params }: Props) {
+  const result = await getProduct(params.slug)
   if (!result) notFound()
 
   const { type, item } = result
   const isBijou = type === 'bijou'
 
   const category = isBijou
-    ? categoryLabels[(item as typeof bijoux[0]).category]
-    : `Montre ${(item as typeof montres[0]).gender}`
+    ? categoryLabels[(item as { category: string }).category as keyof typeof categoryLabels] ?? (item as { category: string }).category
+    : `Montre ${(item as { gender: string }).gender}`
 
   const subtitle = isBijou
-    ? (item as typeof bijoux[0]).material
-    : brandLabels[(item as typeof montres[0]).brand]
+    ? (item as { material: string }).material
+    : brandLabels[(item as { brand: string }).brand as keyof typeof brandLabels] ?? (item as { brand: string }).brand
 
   const backHref = isBijou
-    ? `/bijoux/${(item as typeof bijoux[0]).category}`
-    : `/montres/${(item as typeof montres[0]).gender}`
+    ? `/bijoux/${(item as { category: string }).category}`
+    : `/montres/${(item as { gender: string }).gender}`
 
   const whatsappMsg = `Bonjour, je souhaite avoir des informations sur le produit : ${item.name}.`
 
@@ -80,15 +87,24 @@ export default function ProductPage({ params }: Props) {
 
       <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
         {/* Image */}
-        <div className="relative aspect-square bg-neutral-50">
-          <Image
-            src={item.image}
-            alt={item.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
+        <div className="relative aspect-square bg-neutral-50 overflow-hidden">
+          {item.image ? (
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-neutral-100">
+              <svg className="w-20 h-20 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          )}
         </div>
 
         {/* Info */}

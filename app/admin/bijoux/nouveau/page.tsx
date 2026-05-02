@@ -29,6 +29,7 @@ export default function NouveauBijou() {
   })
   const [saving, setSaving] = useState(false)
   const [generating, setGenerating] = useState(false)
+  const [error, setError] = useState('')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const { name, value, type } = e.target
@@ -56,13 +57,21 @@ export default function NouveauBijou() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setSaving(true)
-    const res = await fetch('/api/admin/bijoux', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (res.ok) {
-      router.push('/admin/bijoux')
+    setError('')
+    try {
+      const res = await fetch('/api/admin/bijoux', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        router.push('/admin/bijoux')
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setError(data.error ?? 'Erreur lors de l\'enregistrement. Réessayez.')
+      }
+    } catch {
+      setError('Erreur réseau. Vérifiez votre connexion.')
     }
     setSaving(false)
   }
@@ -182,6 +191,12 @@ export default function NouveauBijou() {
             </div>
           </label>
         </div>
+
+        {error && (
+          <div className="bg-red-900/30 border border-red-500/50 rounded-lg px-4 py-3 text-red-400 text-sm">
+            ⚠️ {error}
+          </div>
+        )}
 
         <div className="flex gap-3">
           <Link

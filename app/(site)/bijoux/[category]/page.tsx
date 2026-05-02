@@ -1,8 +1,12 @@
 import { notFound } from 'next/navigation'
 import { BijouCard } from '@/components/ProductCard'
-import { bijoux, categoryLabels, Category } from '@/data/products'
+import { categoryLabels, Category } from '@/data/products'
+import { getBijouxLive } from '@/lib/store-live'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+
+export const revalidate = 60
+export const dynamicParams = true
 
 interface Props {
   params: { category: string }
@@ -26,11 +30,12 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 }
 
-export default function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params }: Props) {
   const cat = params.category as Category
   if (!validCategories.includes(cat)) notFound()
 
-  const items = bijoux.filter((b) => b.category === cat)
+  const allBijoux = await getBijouxLive()
+  const items = allBijoux.filter((b) => b.category === cat)
   const label = categoryLabels[cat]
 
   return (
@@ -57,7 +62,7 @@ export default function CategoryPage({ params }: Props) {
         <Link href="/bijoux" className="px-4 py-2 text-xs tracking-widest uppercase border border-neutral-300 text-neutral-600 hover:border-gold-600 hover:text-gold-600 transition-colors font-medium">
           Tous les Bijoux
         </Link>
-        {(['collier', 'bague', 'bracelet', 'bague-mariage', 'gourmette', 'boucle-doreille', 'parure', 'sautoire', 'broche'] as Category[]).map((c) => (
+        {validCategories.map((c) => (
           <Link
             key={c}
             href={`/bijoux/${c}`}

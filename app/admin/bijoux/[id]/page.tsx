@@ -31,6 +31,7 @@ export default function EditBijou() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [generating, setGenerating] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     fetch('/api/admin/bijoux')
@@ -77,12 +78,22 @@ export default function EditBijou() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setSaving(true)
-    await fetch(`/api/admin/bijoux/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    router.push('/admin/bijoux')
+    setError('')
+    try {
+      const res = await fetch(`/api/admin/bijoux/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        router.push('/admin/bijoux')
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setError(data.error ?? 'Erreur lors de l\'enregistrement. Réessayez.')
+      }
+    } catch {
+      setError('Erreur réseau. Vérifiez votre connexion.')
+    }
     setSaving(false)
   }
 
@@ -210,6 +221,12 @@ export default function EditBijou() {
             </div>
           </label>
         </div>
+
+        {error && (
+          <div className="bg-red-900/30 border border-red-500/50 rounded-lg px-4 py-3 text-red-400 text-sm">
+            ⚠️ {error}
+          </div>
+        )}
 
         <div className="flex gap-3">
           <Link
