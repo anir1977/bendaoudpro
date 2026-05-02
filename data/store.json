@@ -87,7 +87,8 @@
       "category": "bracelet",
       "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/gou-002.jpg",
       "description": "Gourmette pour enfant en or 18 carats avec fermoir sécurisé. Un cadeau précieux.",
-      "material": "Or 18 carats"
+      "material": "Or 18 carats",
+      "featured": true
     },
     {
       "id": "bou-001",
