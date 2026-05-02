@@ -246,14 +246,6 @@
       "description": "Montre femme Michael Kors Parker, boîtier doré 38mm, lunette pavée de cristaux. Glamour new-yorkais à votre poignet."
     },
     {
-      "id": "mon-mkh-001",
-      "name": "Michael Kors Lexington MK8718",
-      "brand": "michael-kors",
-      "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1542496658-e33a6d0d851f?w=600&q=80&fit=crop",
-      "description": "Montre homme Michael Kors Lexington chronographe, boîtier acier 45mm, cadran soleillé. La puissance du style américain."
-    },
-    {
       "id": "mon-mkh-002",
       "name": "Michael Kors Reid MK8710",
       "brand": "michael-kors",
