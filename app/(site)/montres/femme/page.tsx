@@ -1,15 +1,18 @@
 import { MontreCard } from '@/components/ProductCard'
-import { montres } from '@/data/products'
+import { getMontresLive } from '@/lib/store-live'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Montres Femme — Ben Daoud Bijouterie Casablanca',
-  description: 'Collection de montres femme Guess, Festina, Daniel Cline, Guess Collection, Tommy Hilfiger chez Ben Daoud Bijouterie à Casablanca.',
+  description: 'Collection de montres femme Guess, Festina, Daniel Cline, Guess Collection, Michael Kors chez Ben Daoud Bijouterie à Casablanca.',
 }
 
-export default function MontreFemmePage() {
-  const items = montres.filter((m) => m.gender === 'femme')
+export default async function MontreFemmePage() {
+  const allMontres = await getMontresLive()
+  const items = allMontres.filter((m) => m.gender === 'femme')
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -25,6 +28,7 @@ export default function MontreFemmePage() {
         <p className="text-gold-600 tracking-[0.3em] uppercase text-xs mb-3">Collection</p>
         <h1 className="section-title">Montres Femme</h1>
         <div className="section-divider" />
+        <p className="text-neutral-500 text-sm">{items.length} montre{items.length > 1 ? 's' : ''} disponible{items.length > 1 ? 's' : ''}</p>
       </div>
 
       <div className="flex gap-3 justify-center mb-10">
@@ -36,11 +40,17 @@ export default function MontreFemmePage() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
-        {items.map((item) => (
-          <MontreCard key={item.id} item={item} />
-        ))}
-      </div>
+      {items.length === 0 ? (
+        <div className="text-center py-20 text-neutral-400">
+          <p>Aucune montre femme disponible pour le moment.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+          {items.map((item) => (
+            <MontreCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
