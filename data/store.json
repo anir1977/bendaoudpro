@@ -189,7 +189,8 @@
       "brand": "festina",
       "gender": "homme",
       "image": "https://festinawatches.com/cdn/shop/files/F20698-2_7966bf69-b693-4fbb-be72-728b388d7d08.jpg",
-      "description": "Montre homme Festina en titane, légèreté et résistance exceptionnelles. Pour l'homme exigeant qui ne fait aucun compromis sur la qualité."
+      "description": "Montre homme Festina en titane, légèreté et résistance exceptionnelles. Pour l'homme exigeant qui ne fait aucun compromis sur la qualité.",
+      "featured": true
     },
     {
       "id": "mon-dcf-001",
