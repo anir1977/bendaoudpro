@@ -4,7 +4,7 @@
       "id": "col-001",
       "name": "Collier Fantaisie Or 18K",
       "category": "collier",
-      "image": "https://scontent.fcmn7-1.fna.fbcdn.net/v/t1.6435-9/152322378_4023193401034124_2930305116587897157_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=06a7ca&_nc_eui2=AeEFcC7ZgXndW7xrME3DD7zWVEdSefGeug1UR1J58Z66DT3WjQpTV-WpslMrCTJsRnJYvzhMsbxSzerlLMZo9KuA&_nc_ohc=vTOUMmQ6XqsQ7kNvwG7e4IO&_nc_oc=Ado0F7b7NT1xPsAcz7zjOPOSnJ6OO4jqxl7Rk-NlBXC3SzBpwthOXRJxgKRSYATqKyg&_nc_zt=23&_nc_ht=scontent.fcmn7-1.fna&_nc_gid=pIGR1fjme8LxPEsUqpmpQA&_nc_ss=7a3a8&oh=00_Af3p6RzqHKU_BWLrd2LREBc7-Rwy6778EbCcMCbdC9XYyQ&oe=69FD9599",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/col-001.jpg",
       "description": "Collier élégant en or 18 carats, finition brillante. Un bijou intemporel qui sublimera toutes vos tenues.",
       "material": "Or 18 carats"
     },
@@ -12,7 +12,7 @@
       "id": "col-002",
       "name": "Collier Pendentif Cœur",
       "category": "collier",
-      "image": "https://scontent.fcmn7-1.fna.fbcdn.net/v/t1.6435-9/87329953_2951069654913176_27145941362409472_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0327a3&_nc_eui2=AeGT4CaV35i76_amtSxIsL3I9zSWI3Iq3nz3NJYjcirefH1kUD7g5fruszoMtdpUybL45CT85MbU27GwBvKGQDaW&_nc_ohc=dj3pO0-Nhl0Q7kNvwHA4fwn&_nc_oc=AdrVcMqhsXeEsGdIwPsbHOGxb2Wb7RwVVy5iq6-pX66rNtgv4xzfBDZp-cba-0jnEuI&_nc_zt=23&_nc_ht=scontent.fcmn7-1.fna&_nc_gid=4TiZPamcpAHYqlY-2g-w8A&_nc_ss=7a3a8&oh=00_Af1jQHI6kH-GF676_neeIjSyVLSzHqmhwnsGUcaq6yolRQ&oe=69FD8B45",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/col-002.jpg",
       "description": "Collier avec pendentif en forme de cœur, en or jaune 18 carats. Idéal pour offrir.",
       "material": "Or 18 carats"
     },
@@ -20,7 +20,7 @@
       "id": "col-003",
       "name": "Collier Chaîne Fine Or",
       "category": "collier",
-      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro\n/main/public/uploads/1776988980785.jpg",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/col-003.jpg",
       "description": "Chaîne fine en or 18 carats, sobre et raffinée. Parfaite pour un port quotidien.",
       "material": "Or 18 carats",
       "featured": true
@@ -29,7 +29,7 @@
       "id": "bag-001",
       "name": "Bague Solitaire Or",
       "category": "bague",
-      "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bag-001.jpg",
       "description": "Bague solitaire en or 18 carats, finition polie. Élégance et simplicité réunies.",
       "material": "Or 18 carats"
     },
@@ -37,7 +37,7 @@
       "id": "bag-002",
       "name": "Bague Jonc Torsadé",
       "category": "bague",
-      "image": "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bag-002.jpg",
       "description": "Bague jonc torsadé en or 18 carats. Un design moderne et sophistiqué.",
       "material": "Or 18 carats"
     },
@@ -45,7 +45,7 @@
       "id": "bra-001",
       "name": "Bracelet Chaîne Or",
       "category": "bracelet",
-      "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bra-001.jpg",
       "description": "Bracelet chaîne en or 18 carats, fermoir à cliquet. Souplesse et raffinement.",
       "material": "Or 18 carats"
     },
@@ -53,7 +53,7 @@
       "id": "bra-002",
       "name": "Bracelet Jonc Plat",
       "category": "bracelet",
-      "image": "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bra-002.jpg",
       "description": "Bracelet jonc plat en or 18 carats, intérieur confort. Un classique intemporel.",
       "material": "Or 18 carats"
     },
@@ -61,7 +61,7 @@
       "id": "mar-001",
       "name": "Alliance Classique Lisse",
       "category": "bague-mariage",
-      "image": "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/mar-001.jpg",
       "description": "Alliance lisse en or 18 carats, symbole d'union éternelle. Disponible en plusieurs largeurs.",
       "material": "Or 18 carats"
     },
@@ -69,7 +69,7 @@
       "id": "mar-002",
       "name": "Alliance Demi-Jonc Diamanté",
       "category": "bague-mariage",
-      "image": "https://images.unsplash.com/photo-1588421357574-87938a86fa28?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/mar-002.jpg",
       "description": "Alliance demi-jonc en or 18 carats avec pavage diamants. Pour un jour inoubliable.",
       "material": "Or 18 carats & Diamants"
     },
@@ -77,7 +77,7 @@
       "id": "gou-001",
       "name": "Gourmette Identité Or",
       "category": "gourmette",
-      "image": "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/gou-001.jpg",
       "description": "Gourmette identité en or 18 carats, personnalisable avec gravure. Un cadeau unique.",
       "material": "Or 18 carats"
     },
@@ -85,7 +85,7 @@
       "id": "gou-002",
       "name": "Gourmette Enfant Or",
       "category": "gourmette",
-      "image": "https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/gou-002.jpg",
       "description": "Gourmette pour enfant en or 18 carats avec fermoir sécurisé. Un cadeau précieux.",
       "material": "Or 18 carats"
     },
@@ -93,7 +93,7 @@
       "id": "bou-001",
       "name": "Boucles d'Oreilles Créoles",
       "category": "boucle-doreille",
-      "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bou-001.jpg",
       "description": "Créoles en or 18 carats, disponibles en différents diamètres. Classiques et indémodables.",
       "material": "Or 18 carats"
     },
@@ -101,7 +101,7 @@
       "id": "bou-002",
       "name": "Puces d'Oreilles Rondes",
       "category": "boucle-doreille",
-      "image": "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bou-002.jpg",
       "description": "Puces d'oreilles rondes en or 18 carats. Discrétion et élégance au quotidien.",
       "material": "Or 18 carats"
     },
@@ -109,7 +109,7 @@
       "id": "bro-001",
       "name": "Broche Fleur Or",
       "category": "broche",
-      "image": "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=600&q=80&fit=crop",
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/bro-001.jpg",
       "description": "Broche motif fleur en or 18 carats. Accessoire élégant pour sublimer vos tenues.",
       "material": "Or 18 carats"
     }
