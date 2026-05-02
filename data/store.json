@@ -123,7 +123,8 @@
       "brand": "guess",
       "gender": "femme",
       "image": "https://guesswatches.com/cdn/shop/files/GW0768L3_Q.png?v=1727461932",
-      "description": "Montre femme Guess en acier doré rose, cadran analogique élégant. Un bijou de poignet alliant glamour et sophistication."
+      "description": "Montre femme Guess en acier doré rose, cadran analogique élégant. Un bijou de poignet alliant glamour et sophistication.",
+      "featured": true
     },
     {
       "id": "mon-gf-002",
