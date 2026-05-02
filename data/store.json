@@ -172,7 +172,8 @@
       "brand": "festina",
       "gender": "femme",
       "image": "https://festinawatches.com/cdn/shop/files/F20693-5_a8383614-3471-4145-8ae1-ac306ea3a438.jpg",
-      "description": "Montre femme Festina chronographe en céramique, élégance premium et précision suisse. Une pièce d'exception pour femme de caractère."
+      "description": "Montre femme Festina chronographe en céramique, élégance premium et précision suisse. Une pièce d'exception pour femme de caractère.",
+      "featured": true
     },
     {
       "id": "mon-fh-001",
