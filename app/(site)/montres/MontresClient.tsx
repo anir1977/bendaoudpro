@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { MontreCard } from '@/components/ProductCard'
 import { brandLabels, WatchBrand, WatchGender, Montre } from '@/data/products'
 
-const brands: WatchBrand[] = ['guess', 'festina', 'daniel-cline', 'guess-collection', 'tommy']
+const brands: WatchBrand[] = ['guess', 'festina', 'daniel-cline', 'guess-collection', 'michael-kors']
 
 interface Props {
   montres: Montre[]

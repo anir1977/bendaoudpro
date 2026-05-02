@@ -5,7 +5,13 @@ import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import ImageUpload from '@/components/admin/ImageUpload'
 
-const brands = ['Guess', 'Festina', 'Daniel Cline', 'Guess Collection', 'Tommy Hilfiger']
+const brands = [
+  { value: 'guess', label: 'Guess' },
+  { value: 'festina', label: 'Festina' },
+  { value: 'daniel-cline', label: 'Daniel Cline' },
+  { value: 'guess-collection', label: 'Guess Collection' },
+  { value: 'michael-kors', label: 'Michael Kors' },
+]
 const genders = [
   { value: 'femme', label: 'Femme' },
   { value: 'homme', label: 'Homme' },
@@ -17,7 +23,7 @@ export default function EditMontre() {
   const { id } = useParams<{ id: string }>()
   const [form, setForm] = useState({
     name: '',
-    brand: 'Guess',
+    brand: 'guess',
     gender: 'femme',
     description: '',
     image: '',
@@ -144,7 +150,7 @@ export default function EditMontre() {
                 className="w-full bg-neutral-800 border border-neutral-700 focus:border-gold-600 rounded-lg px-4 py-2.5 text-white outline-none transition-colors"
               >
                 {brands.map(b => (
-                  <option key={b} value={b}>{b}</option>
+                  <option key={b.value} value={b.value}>{b.label}</option>
                 ))}
               </select>
             </div>

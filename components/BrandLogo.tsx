@@ -42,13 +42,11 @@ export default function BrandLogo({ brand, className = '', size = 'md' }: Props)
         </svg>
       )
 
-    case 'tommy':
+    case 'michael-kors':
       return (
-        <svg viewBox="0 0 180 44" height={h} className={className} aria-label="Tommy Hilfiger">
-          <rect x="0" y="0" width="60" height="8" fill="#C8102E" />
-          <rect x="60" y="0" width="60" height="8" fill="#FFFFFF" stroke="#ddd" strokeWidth="0.5" />
-          <rect x="120" y="0" width="60" height="8" fill="#003087" />
-          <text x="90" y="30" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="10" letterSpacing="2" fill="#1a1a1a">TOMMY HILFIGER</text>
+        <svg viewBox="0 0 160 44" height={h} className={className} aria-label="Michael Kors">
+          <text x="80" y="20" textAnchor="middle" fontFamily="'Arial Black', sans-serif" fontWeight="900" fontSize="18" letterSpacing="1" fill="#1a1a1a">MK</text>
+          <text x="80" y="36" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="7.5" letterSpacing="3.5" fill="#555">MICHAEL KORS</text>
         </svg>
       )
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import BrandLogo from '@/components/BrandLogo'
 import type { WatchBrand } from '@/data/products'
 
-const brands: WatchBrand[] = ['guess', 'festina', 'daniel-cline', 'guess-collection', 'tommy']
+const brands: WatchBrand[] = ['guess', 'festina', 'daniel-cline', 'guess-collection', 'michael-kors']
 
 export default async function WatchesShowcase() {
   const montres = await getMontresLive()

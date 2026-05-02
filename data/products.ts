@@ -9,7 +9,7 @@ export type Category =
   | 'sautoire'
   | 'broche'
 
-export type WatchBrand = 'guess' | 'festina' | 'daniel-cline' | 'guess-collection' | 'tommy'
+export type WatchBrand = 'guess' | 'festina' | 'daniel-cline' | 'guess-collection' | 'michael-kors'
 export type WatchGender = 'femme' | 'homme'
 
 export interface Bijou {
@@ -47,7 +47,7 @@ export const brandLabels: Record<WatchBrand, string> = {
   festina: 'Festina',
   'daniel-cline': 'Daniel Cline',
   'guess-collection': 'Guess Collection',
-  tommy: 'Tommy Hilfiger',
+  'michael-kors': 'Michael Kors',
 }
 
 export const bijoux: Bijou[] = [
@@ -327,38 +327,38 @@ export const montres: Montre[] = [
     image: 'https://guesswatches.com/cdn/shop/files/Z76001G2_Q.png?v=1773838319',
     description: "Montre homme Gc IronForce chronographe, boîtier acier robuste, cadran technique. Pour l'homme qui incarne la force et le style.",
   },
-  // Tommy Hilfiger Femme
+  // Michael Kors Femme
   {
-    id: 'mon-tf-001',
-    name: 'Tommy Hilfiger Blake 1781893',
-    brand: 'tommy',
+    id: 'mon-mkf-001',
+    name: 'Michael Kors Parker MK7422',
+    brand: 'michael-kors',
     gender: 'femme',
-    image: 'https://watch-connection.com/cdn/shop/files/1-6_17e65b22-6fe4-4de5-8096-5f34acd0ffc4.jpg',
-    description: "Montre femme Tommy Hilfiger Blake, cadran bleu élégant, bracelet acier. Le style preppy américain dans toute sa splendeur.",
+    image: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=600&q=80&fit=crop',
+    description: "Montre femme Michael Kors Parker, boîtier doré 38mm, lunette pavée de cristaux. Glamour new-yorkais à votre poignet.",
   },
   {
-    id: 'mon-tf-002',
-    name: 'Tommy Hilfiger Jenna 1782073',
-    brand: 'tommy',
+    id: 'mon-mkf-002',
+    name: 'Michael Kors Slim Runway MK3179',
+    brand: 'michael-kors',
     gender: 'femme',
-    image: 'https://watch-connection.com/cdn/shop/files/1-27_4f284a0e-ce14-4ff3-b5d6-29936f36c859.jpg',
-    description: "Montre femme Tommy Hilfiger Jenna, cadran blanc, bracelet cuir marron. Classe intemporelle et féminité assumée.",
+    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80&fit=crop',
+    description: "Montre femme Michael Kors Slim Runway, design minimaliste ultra-fin, bracelet métal. L'élégance épurée de New York.",
   },
-  // Tommy Hilfiger Homme
+  // Michael Kors Homme
   {
-    id: 'mon-th-001',
-    name: 'Tommy Hilfiger Tyson 1710590',
-    brand: 'tommy',
+    id: 'mon-mkh-001',
+    name: 'Michael Kors Lexington MK8718',
+    brand: 'michael-kors',
     gender: 'homme',
-    image: 'https://watch-connection.com/cdn/shop/files/1-baf9c984b1-1710590.jpg?v=1739396812',
-    description: "Montre homme Tommy Hilfiger Tyson chronographe, cadran noir, boîtier acier brossé. L'élégance sportive à l'américaine.",
+    image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d851f?w=600&q=80&fit=crop',
+    description: "Montre homme Michael Kors Lexington chronographe, boîtier acier 45mm, cadran soleillé. La puissance du style américain.",
   },
   {
-    id: 'mon-th-002',
-    name: 'Tommy Hilfiger Luke 1791118',
-    brand: 'tommy',
+    id: 'mon-mkh-002',
+    name: 'Michael Kors Reid MK8710',
+    brand: 'michael-kors',
     gender: 'homme',
-    image: 'https://watch-connection.com/cdn/shop/files/Tommy-Hilfiger-1791118-Mens-Quartz-Leather-Strap-Silver-Dial-Watch.jpg?v=1708612888',
-    description: "Montre homme Tommy Hilfiger Luke, cadran argenté, bracelet cuir authentique. Un classique indémodable pour l'homme raffiné.",
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&fit=crop',
+    description: "Montre homme Michael Kors Reid, boîtier acier brossé, bracelet cuir noble. Sophistication et caractère pour l'homme moderne.",
   },
 ]

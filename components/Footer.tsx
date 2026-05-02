@@ -56,7 +56,7 @@ export default function Footer() {
                 ['Festina', '/montres?brand=festina'],
                 ['Daniel Cline', '/montres?brand=daniel-cline'],
                 ['Guess Collection', '/montres?brand=guess-collection'],
-                ['Tommy Hilfiger', '/montres?brand=tommy'],
+                ['Michael Kors', '/montres?brand=michael-kors'],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href} className="text-sm text-neutral-400 hover:text-gold-400 transition-colors">
