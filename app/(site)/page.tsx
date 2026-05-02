@@ -2,12 +2,13 @@ import Link from 'next/link'
 import { BijouCard } from '@/components/ProductCard'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import HeroSlider from '@/components/HeroSlider'
-import BrandLogo from '@/components/BrandLogo'
-import { bijoux, montres, categoryLabels } from '@/data/products'
+import WatchesShowcase from '@/components/WatchesShowcase'
+import { bijoux, categoryLabels } from '@/data/products'
 import { Phone, MapPin, Clock, Award } from 'lucide-react'
 
+export const revalidate = 60
+
 const featuredBijoux = bijoux.slice(0, 4)
-const featuredMontres = montres.slice(0, 4)
 
 const categories = [
   { key: 'collier', image: 'https://scontent.fcmn7-1.fna.fbcdn.net/v/t1.6435-9/83363729_2896627917024017_5675658376671920128_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0327a3&_nc_eui2=AeGSKK8hrwLTJ7a0i2OKNPFhjhxTvvZqUnyOHFO-9mpSfEL_SG01jMucZ2kpOkc-IWGx_HXXTfjF7C6nhxQ4Ub3M&_nc_ohc=ggrZV7cpvbIQ7kNvwEG5zAm&_nc_oc=AdqczcHYJRDuDHyWQ3n1SPDZaoHS4d-Mht3rCwa7p7K9HnBJPqRfiG5y5mO6Oy_ZYrs&_nc_zt=23&_nc_ht=scontent.fcmn7-1.fna&_nc_gid=QQxqELcpOSQIAUADZ532GQ&_nc_ss=7a3a8&oh=00_Af03VFelUawUvqB74EE1Jdo-LfChW0f0CJwC4k7KkSMqkw&oe=69FDCCDB' },
@@ -81,34 +82,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Montres Marques */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-title">Nos Marques de Montres</h2>
-            <div className="section-divider" />
-            <p className="text-neutral-500 max-w-xl mx-auto text-sm">
-              Une sélection de montres pour femme et homme des plus grandes marques.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {(['guess', 'festina', 'daniel-cline', 'guess-collection', 'tommy'] as const).map((brand) => (
-              <Link
-                key={brand}
-                href={`/montres?brand=${brand}`}
-                className="flex items-center justify-center p-5 border border-neutral-200 hover:border-gold-400 hover:shadow-md transition-all group h-24 bg-white"
-              >
-                <BrandLogo brand={brand} size="md" className="opacity-80 group-hover:opacity-100 transition-opacity" />
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/montres" className="btn-outline-gold">
-              Voir toutes les Montres
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Watches Showcase */}
+      <WatchesShowcase />
 
       {/* About teaser */}
       <section className="py-20 bg-neutral-900 text-white">
