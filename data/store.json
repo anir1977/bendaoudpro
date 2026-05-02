@@ -119,83 +119,155 @@
   "montres": [
     {
       "id": "mon-gf-001",
-      "name": "Guess Bloom Lady",
+      "name": "Guess Rose Gold GW0768L3",
       "brand": "guess",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&fit=crop",
-      "description": "Montre femme Guess, boîtier rond doré, bracelet acier, cadran nacré. Glamour et féminité."
+      "image": "https://guesswatches.com/cdn/shop/files/GW0768L3_Q.png?v=1727461932",
+      "description": "Montre femme Guess en acier doré rose, cadran analogique élégant. Un bijou de poignet alliant glamour et sophistication."
     },
     {
       "id": "mon-gf-002",
-      "name": "Guess Sparkling Lady",
+      "name": "Guess Gold Multifunction GW0685L2",
       "brand": "guess",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80&fit=crop",
-      "description": "Montre femme Guess avec cristaux, cadran blanc, boîtier acier doré rose."
+      "image": "https://guesswatches.com/cdn/shop/files/GW0685L2_F.png?v=1706026331",
+      "description": "Montre femme Guess multifonction, boîtier 36mm doré, double rangée de cristaux sur le cadran. Luxe accessible et féminité affirmée."
+    },
+    {
+      "id": "mon-gf-003",
+      "name": "Guess Mod Heavy Metal GW0740L2",
+      "brand": "guess",
+      "gender": "femme",
+      "image": "https://guesswatches.com/cdn/shop/files/GW0740L2_Q.png?v=1739482502",
+      "description": "Montre femme Guess Heavy Metal, bracelet acier doré, style audacieux et moderne. Pour la femme qui ose se démarquer."
     },
     {
       "id": "mon-gh-001",
-      "name": "Guess Continental",
+      "name": "Guess Jaq Coffee GW1070G3",
       "brand": "guess",
       "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&q=80&fit=crop",
-      "description": "Montre homme Guess, style sport-chic, boîtier acier noir, cadran chronographe."
+      "image": "https://guesswatches.com/cdn/shop/files/GW1070G3_Q.png?v=1770995636",
+      "description": "Montre homme Guess Jaq, cadran ton café élégant, boîtier acier, style sport-chic affirmé. L'alliance parfaite du style et de la précision."
+    },
+    {
+      "id": "mon-gh-002",
+      "name": "Guess Multifunction GW0203G2",
+      "brand": "guess",
+      "gender": "homme",
+      "image": "https://guesswatches.com/cdn/shop/products/GW0203G2_F.png?v=1691436643",
+      "description": "Montre homme Guess multifonction, cadran blanc, boîtier acier robuste. Design contemporain pour l'homme actif et élégant."
     },
     {
       "id": "mon-ff-001",
-      "name": "Festina Mademoiselle",
+      "name": "Festina Alegria F20622",
       "brand": "festina",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=600&q=80&fit=crop",
-      "description": "Montre femme Festina, bracelet acier doré, cadran blanc avec index diamants."
+      "image": "https://festinawatches.com/cdn/shop/products/F20622.4_27a3165f-7c4d-43f9-b699-912df499228c.png",
+      "description": "Montre femme Festina Alegria, bracelet acier inoxydable, cadran délicat et raffiné. La collection qui célèbre la joie de vivre."
+    },
+    {
+      "id": "mon-ff-002",
+      "name": "Festina Ceramic Chrono F20693",
+      "brand": "festina",
+      "gender": "femme",
+      "image": "https://festinawatches.com/cdn/shop/files/F20693-5_a8383614-3471-4145-8ae1-ac306ea3a438.jpg",
+      "description": "Montre femme Festina chronographe en céramique, élégance premium et précision suisse. Une pièce d'exception pour femme de caractère."
     },
     {
       "id": "mon-fh-001",
-      "name": "Festina Chrono Prestige",
+      "name": "Festina Timeless Chrono F20560",
       "brand": "festina",
       "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1594534475808-b18fc33b045e?w=600&q=80&fit=crop",
-      "description": "Montre homme Festina chronographe, boîtier acier brossé, bracelet cuir noir."
+      "image": "https://festinawatches.com/cdn/shop/products/0000_f20560_4.jpg",
+      "description": "Montre homme Festina Timeless chronographe, boîtier acier brossé, cadran sophistiqué. La montre de l'homme qui maîtrise son temps."
+    },
+    {
+      "id": "mon-fh-002",
+      "name": "Festina Titanium F20698",
+      "brand": "festina",
+      "gender": "homme",
+      "image": "https://festinawatches.com/cdn/shop/files/F20698-2_7966bf69-b693-4fbb-be72-728b388d7d08.jpg",
+      "description": "Montre homme Festina en titane, légèreté et résistance exceptionnelles. Pour l'homme exigeant qui ne fait aucun compromis sur la qualité."
     },
     {
       "id": "mon-dcf-001",
-      "name": "Daniel Cline Élégance",
+      "name": "Daniel Klein Premium Gold",
       "brand": "daniel-cline",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&q=80&fit=crop",
-      "description": "Montre femme Daniel Cline, cadran rond, bracelet acier, finition dorée élégante."
+      "image": "https://www.danielkleinwatchusa.com/cdn/shop/files/DK.1.13696-2.jpg?v=1725732838",
+      "description": "Montre femme Daniel Klein Premium, boîtier doré avec pierres, élégance accessible. Un design féminin et contemporain pour toutes les occasions."
+    },
+    {
+      "id": "mon-dcf-002",
+      "name": "Daniel Klein Premium Silver Mesh",
+      "brand": "daniel-cline",
+      "gender": "femme",
+      "image": "https://www.danielkleinwatchusa.com/cdn/shop/files/DK.1.13695-6.jpg?v=1725732588",
+      "description": "Montre femme Daniel Klein, bracelet mesh argenté fin et délicat, cadran épuré. La montre tendance pour la femme moderne."
     },
     {
       "id": "mon-dch-001",
-      "name": "Daniel Cline Classic",
+      "name": "Daniel Klein Exclusive Black",
       "brand": "daniel-cline",
       "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1539874754764-5a96559165b0?w=600&q=80&fit=crop",
-      "description": "Montre homme Daniel Cline, style classique, boîtier acier, bracelet cuir marron."
+      "image": "https://www.danielkleinwatchusa.com/cdn/shop/files/DK.1.13687-5.png?v=1725733145",
+      "description": "Montre homme Daniel Klein Exclusive Triple Black, boîtier et bracelet noirs, cadran minimaliste. Le style urbain à son apogée."
     },
     {
       "id": "mon-gcf-001",
-      "name": "Guess Collection Chic",
+      "name": "Gc MoonChic Z69002L1",
       "brand": "guess-collection",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1548171915-e79a380a2a4b?w=600&q=80&fit=crop",
-      "description": "Montre femme Guess Collection, boîtier acier doré, bracelet céramique blanche."
+      "image": "https://guesswatches.com/cdn/shop/files/Z69002L1_Q.png?v=1773838187",
+      "description": "Montre femme Gc MoonChic, boîtier acier premium, design lunaire sophistiqué. La quintessence de l'élégance suisse pour femme."
     },
     {
-      "id": "mon-tf-001",
-      "name": "Tommy Hilfiger Sophisticated",
-      "brand": "tommy",
+      "id": "mon-gcf-002",
+      "name": "Gc MoonChic Z69001L7",
+      "brand": "guess-collection",
       "gender": "femme",
-      "image": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80&fit=crop",
-      "description": "Montre femme Tommy Hilfiger, style preppy chic, cadran bleu, bracelet acier argenté."
+      "image": "https://guesswatches.com/cdn/shop/files/Z69001L7_Q.png?v=1773838055",
+      "description": "Montre femme Gc MoonChic, finition luxueuse, bracelet métal élégant. Une montre de prestige qui allie modernité et raffinement."
     },
     {
-      "id": "mon-th-001",
-      "name": "Tommy Hilfiger Blake",
-      "brand": "tommy",
+      "id": "mon-gch-001",
+      "name": "Gc IronForce Chrono Z76001G2",
+      "brand": "guess-collection",
       "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=600&q=80&fit=crop",
-      "description": "Montre homme Tommy Hilfiger, style américain classique, boîtier acier, bracelet cuir."
+      "image": "https://guesswatches.com/cdn/shop/files/Z76001G2_Q.png?v=1773838319",
+      "description": "Montre homme Gc IronForce chronographe, boîtier acier robuste, cadran technique. Pour l'homme qui incarne la force et le style."
+    },
+    {
+      "id": "mon-mkf-001",
+      "name": "Michael Kors Parker MK7422",
+      "brand": "michael-kors",
+      "gender": "femme",
+      "image": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=600&q=80&fit=crop",
+      "description": "Montre femme Michael Kors Parker, boîtier doré 38mm, lunette pavée de cristaux. Glamour new-yorkais à votre poignet."
+    },
+    {
+      "id": "mon-mkf-002",
+      "name": "Michael Kors Slim Runway MK3179",
+      "brand": "michael-kors",
+      "gender": "femme",
+      "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80&fit=crop",
+      "description": "Montre femme Michael Kors Slim Runway, design minimaliste ultra-fin, bracelet métal. L'élégance épurée de New York."
+    },
+    {
+      "id": "mon-mkh-001",
+      "name": "Michael Kors Lexington MK8718",
+      "brand": "michael-kors",
+      "gender": "homme",
+      "image": "https://images.unsplash.com/photo-1542496658-e33a6d0d851f?w=600&q=80&fit=crop",
+      "description": "Montre homme Michael Kors Lexington chronographe, boîtier acier 45mm, cadran soleillé. La puissance du style américain."
+    },
+    {
+      "id": "mon-mkh-002",
+      "name": "Michael Kors Reid MK8710",
+      "brand": "michael-kors",
+      "gender": "homme",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&fit=crop",
+      "description": "Montre homme Michael Kors Reid, boîtier acier brossé, bracelet cuir noble. Sophistication et caractère pour l'homme moderne."
     }
   ]
 }
