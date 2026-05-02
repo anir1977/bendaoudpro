@@ -180,14 +180,6 @@
       "description": "Montre femme Guess Collection, boîtier acier doré, bracelet céramique blanche."
     },
     {
-      "id": "mon-gch-001",
-      "name": "Guess Collection Sport",
-      "brand": "guess-collection",
-      "gender": "homme",
-      "image": "https://images.unsplash.com/photo-1580294647914-4f6d43d3b9b4?w=600&q=80&fit=crop",
-      "description": "Montre homme Guess Collection, design sport luxe, boîtier acier, affichage multiple."
-    },
-    {
       "id": "mon-tf-001",
       "name": "Tommy Hilfiger Sophisticated",
       "brand": "tommy",
