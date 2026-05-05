@@ -4,7 +4,7 @@ import { getBijouxLive } from '@/lib/store-live'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Bijoux en Or 18 Carats — Ben Daoud Bijouterie',

@@ -6,7 +6,7 @@ import WatchesShowcase from '@/components/WatchesShowcase'
 import { bijoux, categoryLabels } from '@/data/products'
 import { Phone, MapPin, Clock, Award } from 'lucide-react'
 
-export const revalidate = 60
+export const revalidate = 3600
 
 const featuredBijoux = bijoux.slice(0, 4)
 

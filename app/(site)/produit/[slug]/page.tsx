@@ -7,7 +7,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import { Phone, MapPin, MessageCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 
-export const revalidate = 60
+export const revalidate = 3600
 export const dynamicParams = true
 
 interface Props {
