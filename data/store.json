@@ -75,11 +75,12 @@
     },
     {
       "id": "gou-001",
-      "name": "Gourmette Identité Or",
+      "name": "Gourmette Or 18K",
       "category": "gourmette",
-      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro\n/main/public/uploads/1777731160844.jpg",
-      "description": "Gourmette identité en or 18 carats, personnalisable avec gravure. Un cadeau unique.",
-      "material": "Or 18 carats"
+      "image": "https://raw.githubusercontent.com/anir1977/bendaoudpro/main/public/uploads/gou-001.jpg",
+      "description": "Gourmette élégante en or 18 carats, finition brillante. Un bijou intemporel qui sublimera votre poignet.",
+      "material": "or 18 carats",
+      "featured": false
     },
     {
       "id": "gou-002",
