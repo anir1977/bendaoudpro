@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="relative aspect-square bg-neutral-50 overflow-hidden">
           {item.image ? (
             <Image
-              src={item.image}
+              src={item.image.startsWith('https://raw.githubusercontent.com/') ? `/api/img?src=${encodeURIComponent(item.image)}` : item.image}
               alt={item.name}
               fill
               className="object-cover"
