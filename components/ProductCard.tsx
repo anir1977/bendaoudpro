@@ -11,6 +11,14 @@ interface MontreCardProps {
   item: Montre
 }
 
+/** Redirige les URLs raw.githubusercontent.com vers notre proxy pour éviter le blocage CORS */
+function getImgSrc(url: string): string {
+  if (url.startsWith('https://raw.githubusercontent.com/')) {
+    return `/api/img?src=${encodeURIComponent(url)}`
+  }
+  return url
+}
+
 function ImagePlaceholder() {
   return (
     <div className="w-full h-full flex items-center justify-center bg-neutral-100">
@@ -27,7 +35,7 @@ export function BijouCard({ item }: BijouCardProps) {
       <div className="overflow-hidden bg-neutral-50 aspect-square relative">
         {item.image ? (
           <Image
-            src={item.image}
+            src={getImgSrc(item.image)}
             alt={item.name}
             fill
             unoptimized
@@ -58,7 +66,7 @@ export function MontreCard({ item }: MontreCardProps) {
       <div className="overflow-hidden bg-neutral-50 aspect-square relative">
         {item.image ? (
           <Image
-            src={item.image}
+            src={getImgSrc(item.image)}
             alt={item.name}
             fill
             unoptimized

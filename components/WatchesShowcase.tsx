@@ -122,7 +122,7 @@ export default async function WatchesShowcase() {
                   {/* Watch image */}
                   {item.image ? (
                     <Image
-                      src={item.image}
+                      src={item.image.startsWith('https://raw.githubusercontent.com/') ? `/api/img?src=${encodeURIComponent(item.image)}` : item.image}
                       alt={item.name}
                       fill
                       unoptimized
